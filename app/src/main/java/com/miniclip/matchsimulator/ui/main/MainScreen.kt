@@ -1,5 +1,6 @@
 package com.miniclip.matchsimulator.ui.main
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -18,11 +19,19 @@ import com.miniclip.matchsimulator.ui.navigation.TableScreen
 import com.miniclip.matchsimulator.ui.navigation.navigateSingleTopTo
 import com.miniclip.matchsimulator.ui.table.TableScreen
 import com.miniclip.matchsimulator.ui.table.dummyStandings
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
     Scaffold(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+            .padding(WindowInsets.safeDrawing.asPaddingValues()),
         topBar = {
             CustomTopBar(
                 onMatchesClick = { navController.navigateSingleTopTo("matches") },
