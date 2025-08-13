@@ -1,12 +1,12 @@
 package com.miniclip.matchsimulator.ui.matches
 
-import com.miniclip.matchsimulator.ui.components.CommonTopBar
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.miniclip.matchsimulator.ui.components.CustomTopBar
 import com.miniclip.matchsimulator.ui.matches.components.MatchesGroup
 import com.miniclip.matchsimulator.ui.matches.components.NoMatches
 
@@ -17,7 +17,14 @@ fun MatchDaysScreen(
     val matches by viewModel.matches.collectAsState()
 
     Scaffold(
-        topBar = { CommonTopBar(title = "Home") }
+        topBar = {
+            CustomTopBar(
+                onMatchesClick = {},
+                onTableClick = {},
+                onStatsClick = {},
+                onResetClick = {}
+            )
+        }
     ) { padding ->
         Column(
             modifier = Modifier
