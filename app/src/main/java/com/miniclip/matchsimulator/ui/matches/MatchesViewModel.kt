@@ -7,6 +7,7 @@ import com.miniclip.matchsimulator.data.repository.MatchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,7 +24,8 @@ class MatchesViewModel @Inject constructor(private val repository: MatchReposito
 
     private fun ensureDummyDataIfEmpty() {
         viewModelScope.launch {
-            val localMatches = matches.value
+            // Collect the current state of matches
+            val localMatches = repository.getAllMatches().first()
             if (localMatches.isEmpty()) {
                 val remoteMatches = repository.getDummyMatches()
                 repository.insertMatches(remoteMatches)
