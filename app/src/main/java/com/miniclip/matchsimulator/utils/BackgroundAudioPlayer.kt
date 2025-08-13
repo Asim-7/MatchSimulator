@@ -27,6 +27,7 @@ fun BackgroundAudioPlayer() {
             val mediaItem = MediaItem.fromUri(audioUri)
             setMediaItem(mediaItem)
             prepare()
+            repeatMode = ExoPlayer.REPEAT_MODE_ALL // Loop audio
         }
     }
 
