@@ -23,7 +23,7 @@ class MatchRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getDummyMatches(): List<MatchEntity> {
-        // Simulate remote fetch
+        // Simulating remote fetch
         return DummyData.matches
     }
 }
