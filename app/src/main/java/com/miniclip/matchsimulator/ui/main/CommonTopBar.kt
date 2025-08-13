@@ -5,6 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,6 +25,8 @@ fun CustomTopBar(
     onResetClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var selectedTab by remember { mutableIntStateOf(0) }
+
     Surface(
         color = MaterialTheme.colorScheme.primary,
         shadowElevation = 4.dp
@@ -47,11 +53,38 @@ fun CustomTopBar(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(onClick = onMatchesClick) { Text("Matches", color = Color.White) }
+                Button(
+                    onClick = {
+                        selectedTab = 0
+                        onMatchesClick()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (selectedTab == 0) Color.White else MaterialTheme.colorScheme.primary,
+                        contentColor = if (selectedTab == 0) MaterialTheme.colorScheme.primary else Color.White
+                    )
+                ) { Text("Matches") }
                 Spacer(modifier = Modifier.width(30.dp))
-                Button(onClick = onTableClick) { Text("Table", color = Color.White) }
+                Button(
+                    onClick = {
+                        selectedTab = 1
+                        onTableClick()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (selectedTab == 1) Color.White else MaterialTheme.colorScheme.primary,
+                        contentColor = if (selectedTab == 1) MaterialTheme.colorScheme.primary else Color.White
+                    )
+                ) { Text("Table") }
                 Spacer(modifier = Modifier.width(30.dp))
-                Button(onClick = onStatsClick) { Text("Stats", color = Color.White) }
+                Button(
+                    onClick = {
+                        selectedTab = 2
+                        onStatsClick()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (selectedTab == 2) Color.White else MaterialTheme.colorScheme.primary,
+                        contentColor = if (selectedTab == 2) MaterialTheme.colorScheme.primary else Color.White
+                    )
+                ) { Text("Stats") }
             }
 
             // Right reset icon
