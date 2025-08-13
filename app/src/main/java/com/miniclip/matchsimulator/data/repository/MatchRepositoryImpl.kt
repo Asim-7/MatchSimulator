@@ -3,8 +3,6 @@ package com.miniclip.matchsimulator.data.repository
 import com.miniclip.matchsimulator.data.local.MatchDao
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import com.miniclip.matchsimulator.data.remote.DummyData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -17,15 +15,11 @@ class MatchRepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertMatches(matches: List<MatchEntity>) {
-        withContext(Dispatchers.IO) {
-            matchDao.insertMatches(matches)
-        }
+        matchDao.insertMatches(matches)
     }
 
     override suspend fun clearMatches() {
-        withContext(Dispatchers.IO) {
-            matchDao.clearMatches()
-        }
+        matchDao.clearMatches()
     }
 
     override suspend fun getDummyMatches(): List<MatchEntity> {
