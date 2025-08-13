@@ -16,6 +16,8 @@ import com.miniclip.matchsimulator.ui.navigation.MatchesScreen
 import com.miniclip.matchsimulator.ui.navigation.StatScreen
 import com.miniclip.matchsimulator.ui.navigation.TableScreen
 import com.miniclip.matchsimulator.ui.navigation.navigateSingleTopTo
+import com.miniclip.matchsimulator.ui.table.TableScreen
+import com.miniclip.matchsimulator.ui.table.dummyStandings
 
 @Composable
 fun MainScreen() {
@@ -36,16 +38,9 @@ fun MainScreen() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = MatchesScreen.route) { MatchDaysScreen() }
-            composable(route = TableScreen.route) { TableScreen() }
+            composable(route = TableScreen.route) { TableScreen(dummyStandings) }
             composable(route = StatScreen.route) { StatsScreen() }
         }
-    }
-}
-
-@Composable
-fun TableScreen() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Table Screen")
     }
 }
 
