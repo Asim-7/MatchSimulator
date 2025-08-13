@@ -4,7 +4,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
 import com.miniclip.matchsimulator.ui.components.CommonTopBar
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -28,19 +28,6 @@ fun MatchDaysScreen(
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            Box(
-                modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "Featured Matches",
-                    fontSize = 18.sp,
-                    style = MaterialTheme.typography.titleMedium
-                )
-            }
-
-            Spacer(modifier = Modifier.height(8.dp))
-
             if (matches.isEmpty()) {
                 Box(
                     modifier = Modifier
@@ -53,15 +40,13 @@ fun MatchDaysScreen(
             } else {
                 // Group matches by matchDay for display
                 val grouped = matches.groupBy { it.matchDay }
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
+                LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
                     contentPadding = PaddingValues(vertical = 8.dp)
                 ) {
                     grouped.forEach { (day, dayMatches) ->
-                        item(span = { GridItemSpan(maxLineSpan) }) {
+                        item {
                             Text(
                                 text = "Match Day $day",
                                 style = MaterialTheme.typography.titleMedium,

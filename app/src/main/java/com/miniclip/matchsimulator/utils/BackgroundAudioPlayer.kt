@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.annotation.OptIn
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.common.MediaItem
@@ -27,6 +27,7 @@ fun BackgroundAudioPlayer() {
             val mediaItem = MediaItem.fromUri(audioUri)
             setMediaItem(mediaItem)
             prepare()
+            playWhenReady = true
             repeatMode = ExoPlayer.REPEAT_MODE_ALL // Loop audio
         }
     }
