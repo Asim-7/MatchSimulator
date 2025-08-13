@@ -15,9 +15,8 @@ fun MatchDaysScreen(
     val matches by viewModel.matches.collectAsState()
     Column(
         modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
             .fillMaxSize()
-            .padding(16.dp)
     ) {
         if (matches.isEmpty()) {
             NoMatches(

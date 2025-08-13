@@ -36,9 +36,7 @@ fun TableScreen(standings: List<TeamStanding>) {
         // Head-to-head logic can be added here if needed
     )
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize()) {
         TableHeader()
         LazyColumn {
             itemsIndexed(sorted) { index, team ->
@@ -58,10 +56,7 @@ fun TableHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(
-                color = Color.LightGray,
-                shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
-            )
+            .background(Color.LightGray)
             .padding(vertical = 8.dp, horizontal = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
