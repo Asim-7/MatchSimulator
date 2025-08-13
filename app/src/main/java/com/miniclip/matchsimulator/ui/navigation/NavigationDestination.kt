@@ -18,4 +18,10 @@ object StatScreen : NavigationDestination {
     override val route = "stats"
 }
 
-fun NavHostController.navigateSingleTopTo(route: String) = this.navigate(route) { launchSingleTop = true }
+fun NavHostController.navigateSingleTopTo(route: String) = this.navigate(route) {
+    launchSingleTop = true
+    restoreState = true
+    popUpTo(this@navigateSingleTopTo.graph.startDestinationId) {
+        saveState = true
+    }
+}
