@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.miniclip.matchsimulator.ui.matches.MatchDaysScreen
+import com.miniclip.matchsimulator.ui.main.MainScreen
 import com.miniclip.matchsimulator.ui.theme.MatchSimulatorTheme
 import com.miniclip.matchsimulator.utils.BackgroundAudioPlayer
 import com.miniclip.matchsimulator.utils.HideSystemBars
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             MatchSimulatorTheme {
                 HideSystemBars()
                 BackgroundAudioPlayer() // Initialize background audio player
-                MatchDaysScreen()
+                MainScreen()
             }
         }
     }
@@ -31,6 +31,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MatchDaysScreenPreview() {
     MatchSimulatorTheme {
-        MatchDaysScreen()
+        MainScreen()
     }
 }

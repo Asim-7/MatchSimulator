@@ -1,4 +1,4 @@
-package com.miniclip.matchsimulator.ui.components
+package com.miniclip.matchsimulator.ui.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
