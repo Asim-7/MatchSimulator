@@ -58,6 +58,8 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     // Jetpack Compose integration for Hilt
     implementation(libs.hilt.navigation.compose)
+    // gson for JSON parsing
+    implementation(libs.gson)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

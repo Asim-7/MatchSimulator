@@ -1,15 +1,22 @@
 package com.miniclip.matchsimulator.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.miniclip.matchsimulator.utils.HeadToHeadConverter
+
+@Entity(tableName = "team_standing")
+@TypeConverters(HeadToHeadConverter::class)
 data class TeamStanding(
-    val team: String,
-    val logo: Int, // resource ID for team logo
-    val strength: Int, // strength defines win probability against other teams
-    val played: Int,
-    val win: Int,
-    val draw: Int,
-    val loss: Int,
-    val goalsFor: Int,
-    val goalsAgainst: Int,
-    val points: Int,
-    val headToHead: Map<String, Int?> // team name to result (1=win, 0=draw, -1=loss), null means not played yet
+    @PrimaryKey val team: String,
+    val logo: Int,
+    val strength: Int,
+    val played: Int = 0,
+    val win: Int = 0,
+    val draw: Int = 0,
+    val loss: Int = 0,
+    val goalsFor: Int = 0,
+    val goalsAgainst: Int = 0,
+    val points: Int = 0,
+    val headToHead: Map<String, Int?> = emptyMap()
 )

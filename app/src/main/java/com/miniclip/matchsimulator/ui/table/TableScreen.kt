@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,9 +21,9 @@ import com.miniclip.matchsimulator.data.model.TeamStanding
 import com.miniclip.matchsimulator.utils.sortStandings
 
 @Composable
-fun TableScreen() {
-    // Get data from ViewModel or repository
-    val sorted = sortStandings(dummyStandings)
+fun TableScreen(viewModel: TeamStandingViewModel) {
+    val teamStandings by viewModel.teamStandings.collectAsState()
+    val sorted = sortStandings(teamStandings)
 
     Column(modifier = Modifier.fillMaxSize()) {
         TableHeader()

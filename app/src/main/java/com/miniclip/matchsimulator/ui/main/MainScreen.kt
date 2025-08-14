@@ -25,11 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.miniclip.matchsimulator.ui.main.components.CustomTopBar
 import com.miniclip.matchsimulator.ui.matches.MatchesViewModel
+import com.miniclip.matchsimulator.ui.table.TeamStandingViewModel
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    val viewModel: MatchesViewModel = hiltViewModel()
+    val viewModelMatches: MatchesViewModel = hiltViewModel()
+    val viewModelStandings: TeamStandingViewModel = hiltViewModel()
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -40,7 +42,10 @@ fun MainScreen() {
                 onMatchesClick = { navController.navigateSingleTopTo("matches") },
                 onTableClick = { navController.navigateSingleTopTo("table") },
                 onStatsClick = { navController.navigateSingleTopTo("stats") },
-                onResetClick = { viewModel.clearMatchesAndInsertDummy() }
+                onResetClick = {
+                    viewModelMatches.clearMatchesAndInsertDummy()
+                    viewModelStandings.clearStandingsAndInsertDummy()
+                }
             )
         }
     ) { innerPadding ->
@@ -49,8 +54,8 @@ fun MainScreen() {
             startDestination = MatchesScreen.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(route = MatchesScreen.route) { MatchDaysScreen(viewModel) }
-            composable(route = TableScreen.route) { TableScreen() }
+            composable(route = MatchesScreen.route) { MatchDaysScreen(viewModelMatches) }
+            composable(route = TableScreen.route) { TableScreen(viewModelStandings) }
             composable(route = StatScreen.route) { StatsScreen() }
         }
     }

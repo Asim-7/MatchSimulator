@@ -3,6 +3,7 @@ package com.miniclip.matchsimulator.data.remote
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import com.miniclip.matchsimulator.R
 import com.miniclip.matchsimulator.data.model.TeamInfo
+import com.miniclip.matchsimulator.data.model.TeamStanding
 
 object DummyData {
 
@@ -110,6 +111,29 @@ object DummyData {
             matchTime = SECOND_TIME,
             homeTeamLogo = teamInfo[1].logo,
             awayTeamLogo = teamInfo[2].logo
+        )
+    )
+
+    val dummyStandingsData = listOf(
+        TeamStanding(
+            team = teamInfo[0].name,
+            logo = teamInfo[0].logo,
+            strength = teamInfo[0].strength,
+        ),
+        TeamStanding(
+            team = teamInfo[1].name,
+            logo = teamInfo[1].logo,
+            strength = teamInfo[1].strength,
+        ),
+        TeamStanding(
+            team = teamInfo[2].name,
+            logo = teamInfo[2].logo,
+            strength = teamInfo[2].strength,
+        ),
+        TeamStanding(
+            team = teamInfo[3].name,
+            logo = teamInfo[3].logo,
+            strength = teamInfo[3].strength,
         )
     )
 }
