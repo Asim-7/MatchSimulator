@@ -11,7 +11,11 @@ import androidx.compose.ui.unit.dp
 import com.miniclip.matchsimulator.data.model.MatchEntity
 
 @Composable
-fun MatchesGroup(modifier: Modifier, grouped: Map<Int, List<MatchEntity>>) {
+fun MatchesGroup(
+    modifier: Modifier,
+    grouped: Map<Int, List<MatchEntity>>,
+    onMatchClick: (MatchEntity) -> Unit
+) {
     LazyColumn(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -28,7 +32,7 @@ fun MatchesGroup(modifier: Modifier, grouped: Map<Int, List<MatchEntity>>) {
             }
             items(dayMatches.size) { index ->
                 val match = dayMatches[index]
-                MatchCard(match = match)
+                MatchCard(match = match, onMatchClick = onMatchClick)
             }
         }
     }

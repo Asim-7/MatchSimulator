@@ -11,18 +11,21 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.clip
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.res.painterResource
 
 @Composable
 fun MatchCard(
     match: MatchEntity,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onMatchClick: (MatchEntity) -> Unit
 ) {
     Card(
         modifier = modifier
             .height(120.dp)
-            .clip(RoundedCornerShape(12.dp)),
+            .clip(RoundedCornerShape(12.dp))
+            .clickable { onMatchClick(match) },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer
         )

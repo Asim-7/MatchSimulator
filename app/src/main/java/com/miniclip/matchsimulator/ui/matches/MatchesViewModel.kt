@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import com.miniclip.matchsimulator.data.repository.MatchRepository
+import com.miniclip.matchsimulator.utils.simulateMatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -37,6 +38,17 @@ class MatchesViewModel @Inject constructor(private val repository: MatchReposito
         viewModelScope.launch {
             repository.clearMatches()
             ensureDummyDataIfEmpty()
+        }
+    }
+
+    fun onMatchClick(match: MatchEntity) {
+        viewModelScope.launch {
+            val (homeScore, awayScore) = simulateMatch(
+                match.homeTeamStrength,
+                match.awayTeamStrength
+            )
+            val updatedMatch = match.copy(homeScore = homeScore, awayScore = awayScore)
+            repository.updateMatch(updatedMatch)
         }
     }
 }

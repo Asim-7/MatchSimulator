@@ -29,7 +29,8 @@ fun MatchDaysScreen(
             val grouped = matches.groupBy { it.matchDay }
             MatchesGroup(
                 modifier = Modifier.fillMaxSize(),
-                grouped = grouped
+                grouped = grouped,
+                onMatchClick = { match -> viewModel.onMatchClick(match) }
             )
         }
     }

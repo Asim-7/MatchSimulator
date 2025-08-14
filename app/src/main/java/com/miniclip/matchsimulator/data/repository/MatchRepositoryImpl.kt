@@ -18,6 +18,10 @@ class MatchRepositoryImpl @Inject constructor(
         matchDao.insertMatches(matches)
     }
 
+    override suspend fun updateMatch(match: MatchEntity) {
+        matchDao.updateMatch(match)
+    }
+
     override suspend fun clearMatches() {
         matchDao.clearMatches()
     }
