@@ -16,17 +16,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.miniclip.matchsimulator.data.model.TeamStanding
+import com.miniclip.matchsimulator.utils.sortStandings
 
 @Composable
-fun TableScreen(standings: List<TeamStanding>) {
-    // Sort by: Points, Goal diff, Goals for, Goals against, Head-to-head
-    val sorted = standings.sortedWith(
-        compareByDescending<TeamStanding> { it.points }
-            .thenByDescending { it.goalsFor - it.goalsAgainst }
-            .thenByDescending { it.goalsFor }
-            .thenBy { it.goalsAgainst }
-        // Head-to-head logic can be added here if needed
-    )
+fun TableScreen() {
+    // Get data from ViewModel or repository
+    val sorted = sortStandings(dummyStandings)
 
     Column(modifier = Modifier.fillMaxSize()) {
         TableHeader()

@@ -48,7 +48,7 @@ fun MainScreen() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = MatchesScreen.route) { MatchDaysScreen() }
-            composable(route = TableScreen.route) { TableScreen(dummyStandings) }
+            composable(route = TableScreen.route) { TableScreen() }
             composable(route = StatScreen.route) { StatsScreen() }
         }
     }
