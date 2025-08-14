@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.ui.graphics.Color
+import com.miniclip.matchsimulator.ui.main.components.CustomTopBar
 
 @Composable
 fun MainScreen() {

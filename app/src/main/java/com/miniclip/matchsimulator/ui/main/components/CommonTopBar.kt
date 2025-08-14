@@ -1,4 +1,4 @@
-package com.miniclip.matchsimulator.ui.main
+package com.miniclip.matchsimulator.ui.main.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -12,7 +12,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.miniclip.matchsimulator.R
@@ -53,38 +52,21 @@ fun CustomTopBar(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(
-                    onClick = {
-                        selectedTab = 0
-                        onMatchesClick()
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (selectedTab == 0) Color.White else MaterialTheme.colorScheme.primary,
-                        contentColor = if (selectedTab == 0) MaterialTheme.colorScheme.primary else Color.White
+                val tabs = listOf(
+                    TabItem("Matches", 0) { selectedTab = 0; onMatchesClick() },
+                    TabItem("Table", 1) { selectedTab = 1; onTableClick() },
+                    TabItem("Stats", 2) { selectedTab = 2; onStatsClick() }
+                )
+                tabs.forEachIndexed { i, tab ->
+                    TabButton(
+                        label = tab.label,
+                        selected = selectedTab == tab.index,
+                        onClick = tab.onClick
                     )
-                ) { Text("Matches") }
-                Spacer(modifier = Modifier.width(30.dp))
-                Button(
-                    onClick = {
-                        selectedTab = 1
-                        onTableClick()
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (selectedTab == 1) Color.White else MaterialTheme.colorScheme.primary,
-                        contentColor = if (selectedTab == 1) MaterialTheme.colorScheme.primary else Color.White
-                    )
-                ) { Text("Table") }
-                Spacer(modifier = Modifier.width(30.dp))
-                Button(
-                    onClick = {
-                        selectedTab = 2
-                        onStatsClick()
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (selectedTab == 2) Color.White else MaterialTheme.colorScheme.primary,
-                        contentColor = if (selectedTab == 2) MaterialTheme.colorScheme.primary else Color.White
-                    )
-                ) { Text("Stats") }
+                    if (i < tabs.lastIndex) {
+                        Spacer(modifier = Modifier.width(30.dp))
+                    }
+                }
             }
 
             // Right reset icon
