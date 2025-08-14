@@ -10,6 +10,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.clip
 import com.miniclip.matchsimulator.data.model.MatchEntity
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.res.painterResource
 
 @Composable
 fun MatchCard(
@@ -24,30 +27,52 @@ fun MatchCard(
             containerColor = MaterialTheme.colorScheme.secondaryContainer
         )
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = "${match.homeTeam} vs ${match.awayTeam}",
-                    fontSize = 16.sp
+        Box(modifier = Modifier.fillMaxSize()) {
+            // Main row content
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Image(
+                    painter = painterResource(id = match.homeTeamLogo),
+                    contentDescription = match.homeTeam,
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(CircleShape)
                 )
-                Spacer(modifier = Modifier.height(8.dp))
-                if (match.homeScore != null && match.awayScore != null) {
+                Box(
+                    modifier = Modifier.weight(1f),
+                    contentAlignment = Alignment.Center
+                ) {
                     Text(
-                        text = "Score: ${match.homeScore} - ${match.awayScore}",
-                        fontSize = 14.sp
-                    )
-                } else {
-                    Text(
-                        text = "Not played yet",
-                        fontSize = 14.sp
+                        text = if (match.homeScore != null && match.awayScore != null) {
+                            "${match.homeScore} - ${match.awayScore}"
+                        } else {
+                            "vs"
+                        },
+                        fontSize = 30.sp,
+                        style = MaterialTheme.typography.titleMedium
                     )
                 }
+                Image(
+                    painter = painterResource(id = match.awayTeamLogo),
+                    contentDescription = match.awayTeam,
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(CircleShape)
+                )
             }
+            // Date and time in the bottom
+            Text(
+                text = "${match.matchDate} | ${match.matchTime}",
+                fontSize = 12.sp,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 8.dp)
+            )
         }
     }
 }

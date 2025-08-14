@@ -10,5 +10,9 @@ data class MatchEntity(
     val homeTeam: String,
     val awayTeam: String,
     val homeScore: Int?, // null means not played yet
-    val awayScore: Int?  // null means not played yet
+    val awayScore: Int?,  // null means not played yet
+    val matchDate: String,
+    val matchTime: String,
+    val homeTeamLogo: Int,
+    val awayTeamLogo: Int
 )
