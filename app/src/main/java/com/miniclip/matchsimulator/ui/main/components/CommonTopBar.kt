@@ -40,7 +40,7 @@ fun CustomTopBar(
             // Left circular image icon
             IconButton(onClick = { /* handle profile click */ }) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_profile), // replace with your image
+                    painter = painterResource(id = R.drawable.ajax), // replace with your image
                     contentDescription = "Profile",
                     modifier = Modifier.clip(CircleShape)
                 )
