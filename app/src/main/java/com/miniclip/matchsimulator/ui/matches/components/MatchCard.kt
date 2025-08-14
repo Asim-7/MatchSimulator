@@ -40,7 +40,7 @@ fun MatchCard(
                     painter = painterResource(id = match.homeTeamLogo),
                     contentDescription = match.homeTeam,
                     modifier = Modifier
-                        .size(48.dp)
+                        .size(60.dp)
                         .clip(CircleShape)
                 )
                 Box(
@@ -61,7 +61,7 @@ fun MatchCard(
                     painter = painterResource(id = match.awayTeamLogo),
                     contentDescription = match.awayTeam,
                     modifier = Modifier
-                        .size(48.dp)
+                        .size(60.dp)
                         .clip(CircleShape)
                 )
             }

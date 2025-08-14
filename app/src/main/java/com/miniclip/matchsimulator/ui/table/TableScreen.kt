@@ -1,28 +1,21 @@
 package com.miniclip.matchsimulator.ui.table
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-
-data class TeamStanding(
-    val team: String,
-    val played: Int,
-    val win: Int,
-    val draw: Int,
-    val loss: Int,
-    val goalsFor: Int,
-    val goalsAgainst: Int,
-    val points: Int,
-    val headToHead: Map<String, Int> // team name to result (1=win, 0=draw, -1=loss)
-)
+import com.miniclip.matchsimulator.data.model.TeamStanding
 
 @Composable
 fun TableScreen(standings: List<TeamStanding>) {
@@ -86,7 +79,7 @@ fun TableRow(position: Int, team: TeamStanding, highlight: Boolean) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         TableCell(position.toString())
-        TableCell(team.team)
+        TableCellImage(team.team, team.logo)
         TableCell(team.played.toString())
         TableCell(team.win.toString())
         TableCell(team.draw.toString())
@@ -95,6 +88,22 @@ fun TableRow(position: Int, team: TeamStanding, highlight: Boolean) {
         TableCell(team.goalsAgainst.toString())
         TableCell((team.goalsFor - team.goalsAgainst).toString())
         TableCell(team.points.toString())
+    }
+}
+
+@Composable
+fun TableCellImage(text: String, logo: Int) {
+    Box(
+        modifier = Modifier.width(64.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = logo),
+            contentDescription = text,
+            modifier = Modifier
+                .clip(CircleShape)
+                .size(40.dp)
+        )
     }
 }
 

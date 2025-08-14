@@ -1,8 +1,13 @@
 package com.miniclip.matchsimulator.ui.table
 
+import com.miniclip.matchsimulator.R
+import com.miniclip.matchsimulator.data.model.TeamStanding
+
 val dummyStandings = listOf(
     TeamStanding(
-        team = "Team A",
+        team = "Ajax",
+        logo = R.drawable.ajax,
+        strength = 88,
         played = 6,
         win = 4,
         draw = 1,
@@ -10,10 +15,12 @@ val dummyStandings = listOf(
         goalsFor = 12,
         goalsAgainst = 6,
         points = 13,
-        headToHead = mapOf("Team B" to 1, "Team C" to 0, "Team D" to -1)
+        headToHead = mapOf("PSV" to 1, "Feyenoord" to 0, "Utrecht" to -1)
     ),
     TeamStanding(
-        team = "Team B",
+        team = "PSV",
+        logo = R.drawable.psv,
+        strength = 84,
         played = 6,
         win = 3,
         draw = 2,
@@ -21,10 +28,12 @@ val dummyStandings = listOf(
         goalsFor = 10,
         goalsAgainst = 7,
         points = 11,
-        headToHead = mapOf("Team A" to -1, "Team C" to 1, "Team D" to 0)
+        headToHead = mapOf("Ajax" to -1, "Feyenoord" to 1, "Utrecht" to 0)
     ),
     TeamStanding(
-        team = "Team C",
+        team = "Feyenoord",
+        logo = R.drawable.feyenoord,
+        strength = 78,
         played = 6,
         win = 2,
         draw = 2,
@@ -32,10 +41,12 @@ val dummyStandings = listOf(
         goalsFor = 8,
         goalsAgainst = 9,
         points = 8,
-        headToHead = mapOf("Team A" to 0, "Team B" to -1, "Team D" to 1)
+        headToHead = mapOf("Ajax" to 0, "PSV" to -1, "Utrecht" to 1)
     ),
     TeamStanding(
-        team = "Team D",
+        team = "Utrecht",
+        logo = R.drawable.utrecht,
+        strength = 72,
         played = 6,
         win = 1,
         draw = 1,
@@ -43,6 +54,6 @@ val dummyStandings = listOf(
         goalsFor = 5,
         goalsAgainst = 13,
         points = 4,
-        headToHead = mapOf("Team A" to 1, "Team B" to 0, "Team C" to -1)
+        headToHead = mapOf("Feyenoord" to 1, "PSV" to 0, "Ajax" to -1)
     )
 )
