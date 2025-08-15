@@ -36,17 +36,55 @@ class AppDatabaseTest {
 
     @Test
     fun insertAndGetMatchEntity() = runBlocking {
-        val match = DummyData.matches
-        matchDao.insertMatches(match)
+        val matches = DummyData.matches
+        matchDao.insertMatches(matches)
         val result = matchDao.getAllMatches().first()
-        Assert.assertEquals(match[0].matchTime, result[0].matchTime)
+        Assert.assertEquals(matches.size, result.size)
+        Assert.assertEquals(matches[0].matchTime, result[0].matchTime)
+    }
+
+    /*@Test
+    fun updateMatchEntity() = runBlocking {
+        val matches = DummyData.matches
+        matchDao.insertMatches(matches)
+        val updated = matches[0].copy(matchTime = "Updated Time")
+        matchDao.updateMatch(updated)
+        val result = matchDao.getAllMatches().first()
+        Assert.assertEquals("Updated Time", result[0].matchTime)
+    }*/
+
+    @Test
+    fun clearMatches() = runBlocking {
+        matchDao.insertMatches(DummyData.matches)
+        matchDao.clearMatches()
+        val result = matchDao.getAllMatches().first()
+        Assert.assertTrue(result.isEmpty())
     }
 
     @Test
     fun insertAndGetTeamStanding() = runBlocking {
-        val standing = DummyData.dummyStandingsData
-        teamStandingDao.insert(standing)
+        val standings = DummyData.dummyStandingsData
+        teamStandingDao.insert(standings)
         val result = teamStandingDao.getAll().first()
-        Assert.assertEquals(standing[0].team, result[0].team)
+        Assert.assertEquals(standings.size, result.size)
+        Assert.assertEquals(standings[0].team, result[0].team)
+    }
+
+    @Test
+    fun updateTeamStanding() = runBlocking {
+        val standings = DummyData.dummyStandingsData
+        teamStandingDao.insert(standings)
+        val updated = standings[0].copy(points = standings[0].points + 1)
+        teamStandingDao.update(updated)
+        val result = teamStandingDao.getAll().first()
+        Assert.assertEquals(standings[0].points + 1, result[0].points)
+    }
+
+    @Test
+    fun clearTeamStandings() = runBlocking {
+        teamStandingDao.insert(DummyData.dummyStandingsData)
+        teamStandingDao.clear()
+        val result = teamStandingDao.getAll().first()
+        Assert.assertTrue(result.isEmpty())
     }
 }
