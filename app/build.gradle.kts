@@ -6,6 +6,10 @@ plugins {
     alias(libs.plugins.hilt.android)
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 android {
     namespace = "com.miniclip.matchsimulator"
     compileSdk = 35
@@ -17,7 +21,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.miniclip.matchsimulator.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -90,6 +94,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    // Hilt Android testing dependencies
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler.v251)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

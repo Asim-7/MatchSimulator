@@ -6,12 +6,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 
 @Immutable
 data class TabItem(
     val label: String,
     val index: Int,
+    val testTag: String,
     val onClick: () -> Unit
 )
 
@@ -19,11 +22,13 @@ data class TabItem(
 fun TabButton(
     label: String,
     selected: Boolean,
+    testTag: String,
     onClick: () -> Unit
 ) {
     val selectedColor = Color.White
     val unselectedColor = MaterialTheme.colorScheme.primary
     Button(
+        modifier = Modifier.testTag(testTag),
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = if (selected) selectedColor else unselectedColor,

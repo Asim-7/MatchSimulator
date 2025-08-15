@@ -1,11 +1,8 @@
-package com.miniclip.matchsimulator.local
+package com.miniclip.matchsimulator.data.local
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.miniclip.matchsimulator.data.local.AppDatabase
-import com.miniclip.matchsimulator.data.local.MatchDao
-import com.miniclip.matchsimulator.data.local.TeamStandingDao
 import com.miniclip.matchsimulator.data.remote.DummyData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking

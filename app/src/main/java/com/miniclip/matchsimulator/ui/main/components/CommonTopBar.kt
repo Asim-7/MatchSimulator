@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,13 +57,13 @@ fun CustomTopBar(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val tabs = listOf(
-                    TabItem(stringResource(id = R.string.matches), 0) {
+                    TabItem(stringResource(id = R.string.matches), 0, TEST_TAG_MATCHES) {
                         selectedTab = 0; onMatchesClick()
                     },
-                    TabItem(stringResource(id = R.string.table), 1) {
+                    TabItem(stringResource(id = R.string.table), 1, TEST_TAG_TABLE) {
                         selectedTab = 1; onTableClick()
                     },
-                    TabItem(stringResource(id = R.string.stats), 2) {
+                    TabItem(stringResource(id = R.string.stats), 2, TEST_TAG_STATS) {
                         selectedTab = 2; onStatsClick()
                     }
                 )
@@ -70,6 +71,7 @@ fun CustomTopBar(
                     TabButton(
                         label = tab.label,
                         selected = selectedTab == tab.index,
+                        testTag = tab.testTag,
                         onClick = tab.onClick
                     )
                     if (i < tabs.lastIndex) {
@@ -79,7 +81,7 @@ fun CustomTopBar(
             }
 
             // Right reset icon
-            IconButton(onClick = onResetClick) {
+            IconButton(modifier = Modifier.testTag(TEST_TAG_RESET), onClick = onResetClick) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_reset),
                     contentDescription = stringResource(id = R.string.reset),
@@ -100,3 +102,8 @@ fun CustomTopBarPreview() {
         onResetClick = {}
     )
 }
+
+const val TEST_TAG_MATCHES = "matches"
+const val TEST_TAG_TABLE = "table"
+const val TEST_TAG_STATS = "stats"
+const val TEST_TAG_RESET = "reset"

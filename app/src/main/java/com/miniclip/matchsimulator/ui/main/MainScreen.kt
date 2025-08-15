@@ -27,6 +27,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.miniclip.matchsimulator.R
@@ -75,7 +76,7 @@ fun MainScreen() {
                 Image(
                     painter = painterResource(id = R.drawable.stadium),
                     contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize().testTag(TEST_TAG_MAIN_SCREEN_BG),
                     contentScale = ContentScale.Crop
                 )
 
@@ -107,7 +108,8 @@ fun MainScreen() {
         FullScreenLoader(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(WindowInsets.safeDrawing.asPaddingValues()),
+                .padding(WindowInsets.safeDrawing.asPaddingValues())
+                .testTag(TEST_TAG_FULL_SCREEN_LOADER),
             visible = showLoader,
             onTimeout = {
                 viewModelMatches.hideLoaderAndHandleMatch()
@@ -122,3 +124,6 @@ fun StatsScreen() {
         Text("Stats Screen")
     }
 }
+
+const val TEST_TAG_MAIN_SCREEN_BG = "main_background"
+const val TEST_TAG_FULL_SCREEN_LOADER = "full_screen_loader"

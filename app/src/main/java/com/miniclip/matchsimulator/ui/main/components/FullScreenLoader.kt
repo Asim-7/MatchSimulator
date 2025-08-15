@@ -23,6 +23,7 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 import android.media.MediaPlayer
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import com.miniclip.matchsimulator.R
 
 @Composable
@@ -60,6 +61,7 @@ fun FullScreenLoader(
     ) {
         Box(
             modifier = modifier
+                .testTag(TEST_TAG_FULL_SCREEN_LOADER)
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.8f))
                 .clickable { /*Consuming click*/ },
@@ -74,3 +76,5 @@ fun FullScreenLoader(
         }
     }
 }
+
+const val TEST_TAG_FULL_SCREEN_LOADER = "fullScreenLoader"
