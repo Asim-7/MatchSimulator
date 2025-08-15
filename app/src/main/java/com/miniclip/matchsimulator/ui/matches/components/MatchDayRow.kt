@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import com.miniclip.matchsimulator.R
 import com.miniclip.matchsimulator.ui.theme.Dimens
 
@@ -25,7 +26,7 @@ fun MatchDayRow(modifier: Modifier, day: Int) {
         )
         Text(
             text = "${stringResource(id = R.string.match_day)} $day",
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             modifier = Modifier.padding(vertical = Dimens.padding_8)
         )
         Text(

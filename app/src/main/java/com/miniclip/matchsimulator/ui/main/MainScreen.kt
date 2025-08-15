@@ -1,5 +1,6 @@
 package com.miniclip.matchsimulator.ui.main
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,10 +22,14 @@ import com.miniclip.matchsimulator.ui.table.TableScreen
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.miniclip.matchsimulator.R
 import com.miniclip.matchsimulator.ui.main.components.CustomTopBar
 import com.miniclip.matchsimulator.ui.main.components.FullScreenLoader
 import com.miniclip.matchsimulator.ui.matches.MatchesViewModel
@@ -65,19 +70,32 @@ fun MainScreen() {
                 )
             }
         ) { innerPadding ->
-            NavHost(
-                navController = navController,
-                startDestination = MatchesScreen.route,
-                modifier = Modifier.padding(innerPadding)
-            ) {
-                composable(route = MatchesScreen.route) {
-                    MatchDaysScreen(
-                        matches = matches,
-                        onMatchClick = { match -> viewModelMatches.showLoaderForMatch(match) }
-                    )
+            Box(modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.stadium),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.5f))
+                )
+                NavHost(
+                    navController = navController,
+                    startDestination = MatchesScreen.route,
+                    modifier = Modifier.padding(innerPadding)
+                ) {
+                    composable(route = MatchesScreen.route) {
+                        MatchDaysScreen(
+                            matches = matches,
+                            onMatchClick = { match -> viewModelMatches.showLoaderForMatch(match) }
+                        )
+                    }
+                    composable(route = TableScreen.route) { TableScreen(teamStandings) }
+                    composable(route = StatScreen.route) { StatsScreen() }
                 }
-                composable(route = TableScreen.route) { TableScreen(teamStandings) }
-                composable(route = StatScreen.route) { StatsScreen() }
             }
         }
 
