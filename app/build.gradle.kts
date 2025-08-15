@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     // gson for JSON parsing
     implementation(libs.gson)
+    // lottie for animations
+    implementation(libs.lottie.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -7,8 +7,10 @@ import com.miniclip.matchsimulator.data.repository.MatchRepository
 import com.miniclip.matchsimulator.data.repository.UpdateMatchAndStandingsUseCase
 import com.miniclip.matchsimulator.utils.simulateMatch
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -22,6 +24,11 @@ class MatchesViewModel @Inject constructor(
 
     val matches: StateFlow<List<MatchEntity>> =
         repository.getAllMatches().stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+
+    private val _showLoader = MutableStateFlow(false)
+    val showLoader: StateFlow<Boolean> = _showLoader.asStateFlow()
+
+    private val _selectedMatch = MutableStateFlow<MatchEntity?>(null)
 
     init {
         ensureDummyDataIfEmpty()
@@ -45,7 +52,7 @@ class MatchesViewModel @Inject constructor(
         }
     }
 
-    fun onMatchClick(match: MatchEntity) {
+    private fun onMatchClick(match: MatchEntity) {
         viewModelScope.launch {
             val (homeScore, awayScore) = simulateMatch(
                 match.homeTeamStrength,
@@ -54,5 +61,16 @@ class MatchesViewModel @Inject constructor(
             val updatedMatch = match.copy(homeScore = homeScore, awayScore = awayScore)
             updateMatchAndStandingsUseCase.updateMatchAndStandings(updatedMatch)
         }
+    }
+
+    fun showLoaderForMatch(match: MatchEntity) {
+        _showLoader.value = true
+        _selectedMatch.value = match
+    }
+
+    fun hideLoaderAndHandleMatch() {
+        _selectedMatch.value?.let { onMatchClick(it) }
+        _showLoader.value = false
+        _selectedMatch.value = null
     }
 }

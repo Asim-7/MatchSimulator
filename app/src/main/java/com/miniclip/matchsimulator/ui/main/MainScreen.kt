@@ -26,6 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.miniclip.matchsimulator.ui.main.components.CustomTopBar
+import com.miniclip.matchsimulator.ui.main.components.FullScreenLoader
 import com.miniclip.matchsimulator.ui.matches.MatchesViewModel
 import com.miniclip.matchsimulator.ui.navigation.MATCH_ROUTE_ID
 import com.miniclip.matchsimulator.ui.navigation.STATS_ROUTE_ID
@@ -43,36 +44,52 @@ fun MainScreen() {
     val matches by viewModelMatches.matches.collectAsState()
     val teamStandings by viewModelStandings.teamStandings.collectAsState()
 
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black)
-            .padding(WindowInsets.safeDrawing.asPaddingValues()),
-        topBar = {
-            CustomTopBar(
-                onMatchesClick = { navController.navigateSingleTopTo(MATCH_ROUTE_ID) },
-                onTableClick = { navController.navigateSingleTopTo(TABLE_ROUTE_ID) },
-                onStatsClick = { navController.navigateSingleTopTo(STATS_ROUTE_ID) },
-                onResetClick = {
-                    viewModelMatches.clearMatchesAndInsertDummy()
-                    viewModelStandings.clearStandingsAndInsertDummy()
-                }
-            )
-        }
-    ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = MatchesScreen.route,
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            composable(route = MatchesScreen.route) {
-                MatchDaysScreen(
-                    matches = matches,
-                    onMatchClick = { match -> viewModelMatches.onMatchClick(match) })
+    // Used to show a loader above the app content
+    val showLoader by viewModelMatches.showLoader.collectAsState()
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Scaffold(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+                .padding(WindowInsets.safeDrawing.asPaddingValues()),
+            topBar = {
+                CustomTopBar(
+                    onMatchesClick = { navController.navigateSingleTopTo(MATCH_ROUTE_ID) },
+                    onTableClick = { navController.navigateSingleTopTo(TABLE_ROUTE_ID) },
+                    onStatsClick = { navController.navigateSingleTopTo(STATS_ROUTE_ID) },
+                    onResetClick = {
+                        viewModelMatches.clearMatchesAndInsertDummy()
+                        viewModelStandings.clearStandingsAndInsertDummy()
+                    }
+                )
             }
-            composable(route = TableScreen.route) { TableScreen(teamStandings) }
-            composable(route = StatScreen.route) { StatsScreen() }
+        ) { innerPadding ->
+            NavHost(
+                navController = navController,
+                startDestination = MatchesScreen.route,
+                modifier = Modifier.padding(innerPadding)
+            ) {
+                composable(route = MatchesScreen.route) {
+                    MatchDaysScreen(
+                        matches = matches,
+                        onMatchClick = { match -> viewModelMatches.showLoaderForMatch(match) }
+                    )
+                }
+                composable(route = TableScreen.route) { TableScreen(teamStandings) }
+                composable(route = StatScreen.route) { StatsScreen() }
+            }
         }
+
+        FullScreenLoader(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(WindowInsets.safeDrawing.asPaddingValues()),
+            visible = showLoader,
+            onTimeout = {
+                viewModelMatches.hideLoaderAndHandleMatch()
+            }
+        )
     }
 }
 
