@@ -3,6 +3,13 @@ package com.miniclip.matchsimulator.utils
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import com.miniclip.matchsimulator.data.model.TeamStanding
 
+/**
+ * Updates the team standings after a match is played.
+ *
+ * @param match The match that was played.
+ * @param standings The current standings of the teams.
+ * @return A pair of updated standings for the home and away teams, or null if no update was needed.
+ */
 suspend fun updateTeamStandingsAfterMatch(
     match: MatchEntity,
     standings: List<TeamStanding>
@@ -31,6 +38,7 @@ suspend fun updateTeamStandingsAfterMatch(
         var awayGoalsFor = awayStanding.goalsFor
         var awayGoalsAgainst = awayStanding.goalsAgainst
 
+        // If there was a previous result, need to revert it before applying the new match result.
         if (previousResult != null) {
             homePlayed -= 1
             awayPlayed -= 1
@@ -95,9 +103,11 @@ suspend fun updateTeamStandingsAfterMatch(
             }
         }
 
+        // Update head-to-head scores
         homeHeadToHead["${match.awayTeam}_score"] = match.homeScore
         awayHeadToHead["${match.homeTeam}_score"] = match.awayScore
 
+        // Create updated standings
         val updatedHome = homeStanding.copy(
             played = homePlayed,
             win = homeWin,

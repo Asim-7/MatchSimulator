@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MatchSimulatorTheme {
-                HideSystemBars()
+                HideSystemBars() // Hide system bars for immersive experience
                 BackgroundAudioPlayer() // Initialize background audio player
                 MainScreen()
             }

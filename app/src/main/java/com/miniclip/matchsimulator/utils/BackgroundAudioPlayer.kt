@@ -45,6 +45,7 @@ fun BackgroundAudioPlayer() {
         }
         lifecycleOwner.lifecycle.addObserver(observer)
 
+        // Cleanup when the composable is disposed
         onDispose {
             lifecycleOwner.lifecycle.removeObserver(observer)
             player.release()
