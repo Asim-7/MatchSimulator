@@ -55,6 +55,8 @@ android {
 dependencies {
     // Hilt core
     implementation(libs.hilt.android)
+    implementation(libs.core.ktx)
+    implementation(libs.androidx.junit.ktx)
     kapt(libs.hilt.android.compiler)
     // Jetpack Compose integration for Hilt
     implementation(libs.hilt.navigation.compose)
@@ -78,11 +80,17 @@ dependencies {
     implementation(libs.androidx.room.runtime.android)
     kapt(libs.androidx.room.compiler)
 
+    // Unit testing dependencies
     testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // Compose UI testing (instrumented)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
