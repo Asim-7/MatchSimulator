@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 
+// This defines a reusable TabButton component for the app
+// It is marked as @Immutable to indicate that it is a stateless component
 @Immutable
 data class TabItem(
     val label: String,
@@ -25,6 +27,7 @@ fun TabButton(
     testTag: String,
     onClick: () -> Unit
 ) {
+    // Defined colors here for simplicity
     val selectedColor = Color.White
     val unselectedColor = MaterialTheme.colorScheme.primary
     Button(

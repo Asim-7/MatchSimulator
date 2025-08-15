@@ -12,6 +12,7 @@ import com.miniclip.matchsimulator.data.remote.DummyData
 
 @Composable
 fun MatchDaysScreen(matches: List<MatchEntity>, onMatchClick: (MatchEntity) -> Unit) {
+    // MatchDaysScreen displays a list of matches grouped by match day
     Column(
         modifier = Modifier
             .padding(
@@ -28,6 +29,7 @@ fun MatchDaysScreen(matches: List<MatchEntity>, onMatchClick: (MatchEntity) -> U
                     .padding(Dimens.padding_32)
             )
         } else {
+            // Display matches grouped by match day
             MatchesGroup(
                 modifier = Modifier.fillMaxSize(),
                 matches = matches,

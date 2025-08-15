@@ -17,8 +17,11 @@ import com.miniclip.matchsimulator.ui.table.components.TableRow
 fun TableScreen(teamStandings: List<TeamStanding>) {
     val sorted = sortStandings(teamStandings)
 
+    // TableScreen displays the league table with team standings
     Column(modifier = Modifier.fillMaxSize()) {
+        // TableHeader displays the header row of the league table
         TableHeader()
+        // LazyColumn displays the list of team standings
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(Dimens.padding_8)
         ) {

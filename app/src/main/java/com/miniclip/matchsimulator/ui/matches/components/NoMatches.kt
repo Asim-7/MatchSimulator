@@ -11,6 +11,7 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun NoMatches(modifier: Modifier) {
+    // NoMatches displays a message when there are no matches to show
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center

@@ -16,6 +16,7 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 @Composable
 fun TableRow(position: Int, team: TeamStanding, highlight: Boolean) {
     val bgColor = if (highlight) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
+    // TableRow displays a single row in the league table with team standings
     Row(
         modifier = Modifier
             .fillMaxWidth()

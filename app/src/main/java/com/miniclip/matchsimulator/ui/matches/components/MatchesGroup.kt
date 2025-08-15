@@ -16,6 +16,7 @@ fun MatchesGroup(
     matches: List<MatchEntity>,
     onMatchClick: (MatchEntity) -> Unit
 ) {
+    // MatchesGroup displays a list of matches grouped by match day
     LazyColumn(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(Dimens.padding_12),

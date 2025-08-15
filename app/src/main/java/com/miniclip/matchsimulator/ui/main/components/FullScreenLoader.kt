@@ -37,6 +37,7 @@ fun FullScreenLoader(
     val currentOnTimeout by rememberUpdatedState(onTimeout)
 
     if (visible) {
+        // Start a coroutine to handle timeout
         LaunchedEffect(Unit) {
             delay(3000)
             currentOnTimeout()
@@ -54,11 +55,13 @@ fun FullScreenLoader(
         }
     }
 
+    // Show the full-screen loader with fade-in and fade-out animations
     AnimatedVisibility(
         visible = visible,
         enter = fadeIn(),
         exit = fadeOut()
     ) {
+        // Full-screen loader with Lottie animation
         Box(
             modifier = modifier
                 .testTag(TEST_TAG_FULL_SCREEN_LOADER)

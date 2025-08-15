@@ -53,6 +53,7 @@ fun MainScreen() {
     // Used to show a loader above the app content
     val showLoader by viewModelMatches.showLoader.collectAsState()
 
+    // Main screen layout with a Scaffold for top bar and content
     Box(modifier = Modifier.fillMaxSize()) {
         Scaffold(
             modifier = Modifier
@@ -71,6 +72,7 @@ fun MainScreen() {
                 )
             }
         ) { innerPadding ->
+            // Main content of the screen
             Box(modifier = Modifier.fillMaxSize()) {
                 // Background image for the main screen
                 Image(
@@ -105,6 +107,7 @@ fun MainScreen() {
             }
         }
 
+        // Full-screen loader that appears to indicate match simulation
         FullScreenLoader(
             modifier = Modifier
                 .fillMaxSize()
@@ -117,6 +120,7 @@ fun MainScreen() {
     }
 }
 
+// StatsScreen is a placeholder for the stats screen
 @Composable
 fun StatsScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

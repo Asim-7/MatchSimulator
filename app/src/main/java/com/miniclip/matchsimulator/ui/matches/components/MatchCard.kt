@@ -23,6 +23,7 @@ fun MatchCard(
     modifier: Modifier = Modifier,
     onMatchClick: (MatchEntity) -> Unit
 ) {
+    // MatchCard displays match details with a blurred background
     Card(
         modifier = modifier
             .height(Dimens.MatchCardHeight)
@@ -33,6 +34,7 @@ fun MatchCard(
             containerColor = Color.Transparent
         )
     ) {
+        // The card contains a blurred background and match details
         Box(modifier = Modifier.fillMaxSize()) {
             // Blurred background layer
             Box(
@@ -49,6 +51,7 @@ fun MatchCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
+                // Home team logo
                 Image(
                     painter = painterResource(id = match.homeTeamLogo),
                     contentDescription = match.homeTeam,
@@ -56,6 +59,8 @@ fun MatchCard(
                         .size(Dimens.TeamLogoSize)
                         .clip(CircleShape)
                 )
+
+                // Match score
                 Box(
                     modifier = Modifier.weight(1f),
                     contentAlignment = Alignment.Center
@@ -71,6 +76,8 @@ fun MatchCard(
                         color = MaterialTheme.colorScheme.onSecondaryContainer
                     )
                 }
+
+                // Away team logo
                 Image(
                     painter = painterResource(id = match.awayTeamLogo),
                     contentDescription = match.awayTeam,
@@ -79,6 +86,8 @@ fun MatchCard(
                         .clip(CircleShape)
                 )
             }
+            
+            // Match date and time at the bottom
             Text(
                 text = "${match.matchDate} | ${match.matchTime}",
                 fontSize = Dimens.font_12,

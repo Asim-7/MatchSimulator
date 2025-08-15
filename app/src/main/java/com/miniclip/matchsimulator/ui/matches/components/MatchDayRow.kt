@@ -15,6 +15,7 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun MatchDayRow(modifier: Modifier, day: Int) {
+    // MatchDayRow displays the match day information with home and away labels
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,

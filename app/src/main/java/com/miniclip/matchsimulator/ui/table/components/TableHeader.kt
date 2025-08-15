@@ -14,6 +14,7 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun TableHeader() {
+    // TableHeader displays the header row of the table with column titles
     Row(
         modifier = Modifier
             .fillMaxWidth()

@@ -16,6 +16,7 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun TableCellImage(text: String, logo: Int) {
+    // TableCellImage displays an image with a circular shape and a text description
     Box(
         modifier = Modifier.width(Dimens.TableCellWidth),
         contentAlignment = Alignment.Center
@@ -32,6 +33,7 @@ fun TableCellImage(text: String, logo: Int) {
 
 @Composable
 fun TableCell(text: String, bold: Boolean = false) {
+    // TableCell displays a text with optional bold styling
     Box(
         modifier = Modifier.width(Dimens.TableCellWidth),
         contentAlignment = Alignment.Center
