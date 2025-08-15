@@ -21,6 +21,8 @@ import com.miniclip.matchsimulator.ui.table.TableScreen
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.miniclip.matchsimulator.ui.main.components.CustomTopBar
@@ -33,8 +35,14 @@ import com.miniclip.matchsimulator.ui.table.TeamStandingViewModel
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
+    // creating both ViewModel here because it is used for onResetClick
     val viewModelMatches: MatchesViewModel = hiltViewModel()
     val viewModelStandings: TeamStandingViewModel = hiltViewModel()
+
+    // collecting main states from the view model here rather than passing viewmodel to screens
+    val matches by viewModelMatches.matches.collectAsState()
+    val teamStandings by viewModelStandings.teamStandings.collectAsState()
+
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -57,8 +65,12 @@ fun MainScreen() {
             startDestination = MatchesScreen.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(route = MatchesScreen.route) { MatchDaysScreen(viewModelMatches) }
-            composable(route = TableScreen.route) { TableScreen(viewModelStandings) }
+            composable(route = MatchesScreen.route) {
+                MatchDaysScreen(
+                    matches = matches,
+                    onMatchClick = { match -> viewModelMatches.onMatchClick(match) })
+            }
+            composable(route = TableScreen.route) { TableScreen(teamStandings) }
             composable(route = StatScreen.route) { StatsScreen() }
         }
     }

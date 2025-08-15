@@ -10,7 +10,7 @@ object DummyData {
     private const val FIRST_TIME = "18:30 CET"
     private const val SECOND_TIME = "21:00 CET"
 
-    val teamInfo = listOf(
+    private val teamInfo = listOf(
         TeamInfo(
             name = "Ajax",
             logo = R.drawable.ajax,

@@ -3,13 +3,15 @@ package com.miniclip.matchsimulator.ui.matches
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import com.miniclip.matchsimulator.data.model.MatchEntity
 import com.miniclip.matchsimulator.ui.matches.components.MatchesGroup
 import com.miniclip.matchsimulator.ui.matches.components.NoMatches
 import com.miniclip.matchsimulator.ui.theme.Dimens
+import androidx.compose.ui.tooling.preview.Preview
+import com.miniclip.matchsimulator.data.remote.DummyData
 
 @Composable
-fun MatchDaysScreen(viewModel: MatchesViewModel) {
-    val matches by viewModel.matches.collectAsState()
+fun MatchDaysScreen(matches: List<MatchEntity>, onMatchClick: (MatchEntity) -> Unit) {
     Column(
         modifier = Modifier
             .padding(
@@ -26,12 +28,20 @@ fun MatchDaysScreen(viewModel: MatchesViewModel) {
                     .padding(Dimens.padding_32)
             )
         } else {
-            val grouped = matches.groupBy { it.matchDay }
             MatchesGroup(
                 modifier = Modifier.fillMaxSize(),
-                grouped = grouped,
-                onMatchClick = { match -> viewModel.onMatchClick(match) }
+                matches = matches,
+                onMatchClick = { match -> onMatchClick(match) }
             )
         }
     }
+}
+
+@Preview(showBackground = true, widthDp = 640, heightDp = 360, apiLevel = 34)
+@Composable
+fun MatchDaysScreenPreview() {
+    MatchDaysScreen(
+        matches = DummyData.matches,
+        onMatchClick = {}
+    )
 }

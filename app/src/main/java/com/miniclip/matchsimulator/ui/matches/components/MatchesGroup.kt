@@ -13,7 +13,7 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 @Composable
 fun MatchesGroup(
     modifier: Modifier,
-    grouped: Map<Int, List<MatchEntity>>,
+    matches: List<MatchEntity>,
     onMatchClick: (MatchEntity) -> Unit
 ) {
     LazyColumn(
@@ -21,6 +21,7 @@ fun MatchesGroup(
         verticalArrangement = Arrangement.spacedBy(Dimens.padding_12),
         contentPadding = PaddingValues(vertical = Dimens.padding_8)
     ) {
+        val grouped = matches.groupBy { it.matchDay }
         grouped.forEach { (day, dayMatches) ->
             item {
                 MatchDayRow(

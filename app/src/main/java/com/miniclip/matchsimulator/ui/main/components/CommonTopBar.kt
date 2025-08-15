@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.miniclip.matchsimulator.R
 import com.miniclip.matchsimulator.ui.theme.Dimens
 
@@ -87,4 +88,15 @@ fun CustomTopBar(
             }
         }
     }
+}
+
+@Preview(showBackground = true, widthDp = 640, heightDp = 56, apiLevel = 34)
+@Composable
+fun CustomTopBarPreview() {
+    CustomTopBar(
+        onMatchesClick = {},
+        onTableClick = {},
+        onStatsClick = {},
+        onResetClick = {}
+    )
 }
