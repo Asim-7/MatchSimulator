@@ -40,16 +40,6 @@ class AppDatabaseTest {
         Assert.assertEquals(matches[0].matchTime, result[0].matchTime)
     }
 
-    /*@Test
-    fun updateMatchEntity() = runBlocking {
-        val matches = DummyData.matches
-        matchDao.insertMatches(matches)
-        val updated = matches[0].copy(matchTime = "Updated Time")
-        matchDao.updateMatch(updated)
-        val result = matchDao.getAllMatches().first()
-        Assert.assertEquals("Updated Time", result[0].matchTime)
-    }*/
-
     @Test
     fun clearMatches() = runBlocking {
         matchDao.insertMatches(DummyData.matches)
