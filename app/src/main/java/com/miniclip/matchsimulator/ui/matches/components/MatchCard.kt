@@ -8,9 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import com.miniclip.matchsimulator.ui.theme.Dimens
 
@@ -23,13 +26,22 @@ fun MatchCard(
     Card(
         modifier = modifier
             .height(Dimens.MatchCardHeight)
+            .padding(horizontal = Dimens.padding_25)
             .clip(RoundedCornerShape(Dimens.MatchCardCornerRadius))
             .clickable { onMatchClick(match) },
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer
+            containerColor = Color.Transparent
         )
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
+            // Blurred background layer
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .blur(Dimens.padding_30)
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.6f))
+            )
+            // Content layer
             Row(
                 modifier = Modifier
                     .fillMaxSize()

@@ -8,6 +8,7 @@ object Dimens {
     val padding_8 = 8.dp
     val padding_12 = 12.dp
     val padding_16 = 16.dp
+    val padding_25 = 25.dp
     val padding_30 = 30.dp
     val padding_32 = 32.dp
     // MatchCard

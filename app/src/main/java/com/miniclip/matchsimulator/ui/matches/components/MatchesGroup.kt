@@ -27,7 +27,7 @@ fun MatchesGroup(
                 MatchDayRow(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = Dimens.padding_16, vertical = Dimens.padding_8),
+                        .padding(horizontal = Dimens.padding_30, vertical = Dimens.padding_8),
                     day = day
                 )
             }
