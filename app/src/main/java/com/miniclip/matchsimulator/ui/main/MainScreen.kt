@@ -108,8 +108,7 @@ fun MainScreen() {
         FullScreenLoader(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(WindowInsets.safeDrawing.asPaddingValues())
-                .testTag(TEST_TAG_FULL_SCREEN_LOADER),
+                .padding(WindowInsets.safeDrawing.asPaddingValues()),
             visible = showLoader,
             onTimeout = {
                 viewModelMatches.hideLoaderAndHandleMatch()
@@ -126,4 +125,3 @@ fun StatsScreen() {
 }
 
 const val TEST_TAG_MAIN_SCREEN_BG = "main_background"
-const val TEST_TAG_FULL_SCREEN_LOADER = "full_screen_loader"

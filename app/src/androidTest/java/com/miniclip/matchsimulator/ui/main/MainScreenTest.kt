@@ -27,6 +27,5 @@ class MainScreenTest {
     @Test
     fun mainScreen_showsMatchesFromFakeData() {
         composeRule.onNodeWithTag(TEST_TAG_MAIN_SCREEN_BG).assertIsDisplayed()
-        //composeRule.onNodeWithText("Team B").assertIsDisplayed()
     }
 }
