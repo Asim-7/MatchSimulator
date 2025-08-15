@@ -1,11 +1,24 @@
 <resources>
     <string name="app_name">MatchSimulator</string>
+    <!-- MatchesScreen -->
     <string name="no_matches">No matches</string>
     <string name="home">Home</string>
     <string name="away">Away</string>
     <string name="match_day">Match Day</string>
+    <!-- TopBar -->
     <string name="matches">Matches</string>
     <string name="table">Table</string>
     <string name="stats">Stats</string>
     <string name="reset">Reset</string>
+    <!-- TableScreen -->
+    <string name="table_position">Position</string>
+    <string name="table_team">Team</string>
+    <string name="table_played">Played</string>
+    <string name="table_win">Win</string>
+    <string name="table_draw">Draw</string>
+    <string name="table_loss">Loss</string>
+    <string name="table_for">For</string>
+    <string name="table_against">Against</string>
+    <string name="table_difference">-/+</string>
+    <string name="table_points">Points</string>
 </resources>

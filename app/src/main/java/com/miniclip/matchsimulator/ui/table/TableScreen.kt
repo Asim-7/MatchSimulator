@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -16,9 +17,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.miniclip.matchsimulator.data.model.TeamStanding
+import com.miniclip.matchsimulator.ui.theme.Dimens
 import com.miniclip.matchsimulator.utils.sortStandings
+import androidx.compose.ui.res.stringResource
+import com.miniclip.matchsimulator.R
 
 @Composable
 fun TableScreen(viewModel: TeamStandingViewModel) {
@@ -28,7 +31,7 @@ fun TableScreen(viewModel: TeamStandingViewModel) {
     Column(modifier = Modifier.fillMaxSize()) {
         TableHeader()
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(Dimens.padding_8)
         ) {
             itemsIndexed(sorted) { index, team ->
                 val qualified = index < 2
@@ -47,31 +50,31 @@ fun TableHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.LightGray)
-            .padding(vertical = 8.dp, horizontal = 8.dp),
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .padding(vertical = Dimens.padding_8, horizontal = Dimens.padding_8),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        TableCell("Position", bold = true)
-        TableCell("Team", bold = true)
-        TableCell("Played", bold = true)
-        TableCell("Win", bold = true)
-        TableCell("Draw", bold = true)
-        TableCell("Loss", bold = true)
-        TableCell("For", bold = true)
-        TableCell("Against", bold = true)
-        TableCell("-/+", bold = true)
-        TableCell("Points", bold = true)
+        TableCell(stringResource(id = R.string.table_position), bold = true)
+        TableCell(stringResource(id = R.string.table_team), bold = true)
+        TableCell(stringResource(id = R.string.table_played), bold = true)
+        TableCell(stringResource(id = R.string.table_win), bold = true)
+        TableCell(stringResource(id = R.string.table_draw), bold = true)
+        TableCell(stringResource(id = R.string.table_loss), bold = true)
+        TableCell(stringResource(id = R.string.table_for), bold = true)
+        TableCell(stringResource(id = R.string.table_against), bold = true)
+        TableCell(stringResource(id = R.string.table_difference), bold = true)
+        TableCell(stringResource(id = R.string.table_points), bold = true)
     }
 }
 
 @Composable
 fun TableRow(position: Int, team: TeamStanding, highlight: Boolean) {
-    val bgColor = if (highlight) Color(0xFFD0FFD0) else Color.Transparent
+    val bgColor = if (highlight) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(bgColor)
-            .padding(vertical = 8.dp),
+            .padding(vertical = Dimens.padding_8),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -91,7 +94,7 @@ fun TableRow(position: Int, team: TeamStanding, highlight: Boolean) {
 @Composable
 fun TableCellImage(text: String, logo: Int) {
     Box(
-        modifier = Modifier.width(64.dp),
+        modifier = Modifier.width(Dimens.TableCellWidth),
         contentAlignment = Alignment.Center
     ) {
         Image(
@@ -99,7 +102,7 @@ fun TableCellImage(text: String, logo: Int) {
             contentDescription = text,
             modifier = Modifier
                 .clip(CircleShape)
-                .size(40.dp)
+                .size(Dimens.TableCellImageSize)
         )
     }
 }
@@ -107,7 +110,7 @@ fun TableCellImage(text: String, logo: Int) {
 @Composable
 fun TableCell(text: String, bold: Boolean = false) {
     Box(
-        modifier = Modifier.width(64.dp),
+        modifier = Modifier.width(Dimens.TableCellWidth),
         contentAlignment = Alignment.Center
     ) {
         Text(

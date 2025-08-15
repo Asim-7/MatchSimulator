@@ -16,6 +16,9 @@ object Dimens {
     val TeamLogoSize = 60.dp
     // TopBar
     val TopBarHeight = 56.dp
+    // Table cells
+    val TableCellWidth = 64.dp
+    val TableCellImageSize = 40.dp
     // font sizes
     val font_30 = 30.sp
     val font_12 = 12.sp
