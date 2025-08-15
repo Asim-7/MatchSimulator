@@ -71,17 +71,22 @@ fun MainScreen() {
             }
         ) { innerPadding ->
             Box(modifier = Modifier.fillMaxSize()) {
+                // Background image for the main screen
                 Image(
                     painter = painterResource(id = R.drawable.stadium),
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
+
+                // Semi-transparent overlay to darken the background
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.2f))
                 )
+
+                // Navigation host for the main content
                 NavHost(
                     navController = navController,
                     startDestination = MatchesScreen.route,
