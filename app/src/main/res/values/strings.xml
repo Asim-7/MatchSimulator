@@ -4,4 +4,8 @@
     <string name="home">Home</string>
     <string name="away">Away</string>
     <string name="match_day">Match Day</string>
+    <string name="matches">Matches</string>
+    <string name="table">Table</string>
+    <string name="stats">Stats</string>
+    <string name="reset">Reset</string>
 </resources>

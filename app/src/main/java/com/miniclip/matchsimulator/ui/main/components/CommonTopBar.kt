@@ -12,9 +12,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import com.miniclip.matchsimulator.R
+import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun CustomTopBar(
@@ -28,19 +30,19 @@ fun CustomTopBar(
 
     Surface(
         color = MaterialTheme.colorScheme.primary,
-        shadowElevation = 4.dp
+        shadowElevation = Dimens.padding_4
     ) {
         Row(
             modifier = modifier
                 .fillMaxWidth()
-                .height(56.dp)
-                .padding(horizontal = 8.dp),
+                .height(Dimens.TopBarHeight)
+                .padding(horizontal = Dimens.padding_8),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Left circular image icon
             IconButton(onClick = { /* handle profile click */ }) {
                 Image(
-                    painter = painterResource(id = R.drawable.ajax), // replace with your image
+                    painter = painterResource(id = R.drawable.ajax),
                     contentDescription = "Profile",
                     modifier = Modifier.clip(CircleShape)
                 )
@@ -53,9 +55,15 @@ fun CustomTopBar(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val tabs = listOf(
-                    TabItem("Matches", 0) { selectedTab = 0; onMatchesClick() },
-                    TabItem("Table", 1) { selectedTab = 1; onTableClick() },
-                    TabItem("Stats", 2) { selectedTab = 2; onStatsClick() }
+                    TabItem(stringResource(id = R.string.matches), 0) {
+                        selectedTab = 0; onMatchesClick()
+                    },
+                    TabItem(stringResource(id = R.string.table), 1) {
+                        selectedTab = 1; onTableClick()
+                    },
+                    TabItem(stringResource(id = R.string.stats), 2) {
+                        selectedTab = 2; onStatsClick()
+                    }
                 )
                 tabs.forEachIndexed { i, tab ->
                     TabButton(
@@ -64,7 +72,7 @@ fun CustomTopBar(
                         onClick = tab.onClick
                     )
                     if (i < tabs.lastIndex) {
-                        Spacer(modifier = Modifier.width(30.dp))
+                        Spacer(modifier = Modifier.width(Dimens.padding_30))
                     }
                 }
             }
@@ -72,8 +80,9 @@ fun CustomTopBar(
             // Right reset icon
             IconButton(onClick = onResetClick) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_reset), // replace with your reset icon
-                    contentDescription = "Reset"
+                    painter = painterResource(id = R.drawable.ic_reset),
+                    contentDescription = stringResource(id = R.string.reset),
+                    tint = Color.White
                 )
             }
         }
