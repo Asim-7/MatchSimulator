@@ -3,6 +3,9 @@ package com.miniclip.matchsimulator.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * This class is used to store match details in the local database.
+ * */
 @Entity(tableName = "matches")
 data class MatchEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,

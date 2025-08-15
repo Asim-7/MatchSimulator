@@ -3,6 +3,9 @@ package com.miniclip.matchsimulator.data.repository
 import com.miniclip.matchsimulator.data.model.TeamStanding
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * StandingsRepository interface defines the contract for team standings data operations.
+ */
 interface StandingsRepository {
     fun getAllStandings(): Flow<List<TeamStanding>>
     suspend fun getTeamStanding(teamName: String): TeamStanding

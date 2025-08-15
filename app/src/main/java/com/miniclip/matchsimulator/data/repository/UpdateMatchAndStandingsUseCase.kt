@@ -5,6 +5,11 @@ import com.miniclip.matchsimulator.utils.updateTeamStandingsAfterMatch
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
+/**
+ * Use case for updating a match and the corresponding team standings.
+ * This use case handles the logic of updating a match in the repository
+ * and recalculating the standings based on the updated match data.
+ */
 class UpdateMatchAndStandingsUseCase @Inject constructor(
     private val matchRepository: MatchRepository,
     private val standingsRepository: StandingsRepository

@@ -5,6 +5,9 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.miniclip.matchsimulator.utils.HeadToHeadConverter
 
+/**
+ * This class represents the standing of a team in the league.
+ */
 @Entity(tableName = "team_standing")
 @TypeConverters(HeadToHeadConverter::class)
 data class TeamStanding(

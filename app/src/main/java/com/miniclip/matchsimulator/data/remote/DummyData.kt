@@ -5,6 +5,11 @@ import com.miniclip.matchsimulator.R
 import com.miniclip.matchsimulator.data.model.TeamInfo
 import com.miniclip.matchsimulator.data.model.TeamStanding
 
+/**
+ * Dummy data to simulate remote data source for matches.
+ * This is used for testing purposes and should be replaced with actual remote data fetching in production.
+ * Also matches and standings data is used for testing purposes.
+ */
 object DummyData {
 
     private const val FIRST_TIME = "18:30 CET"
