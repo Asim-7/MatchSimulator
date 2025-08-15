@@ -21,11 +21,13 @@ fun TabButton(
     selected: Boolean,
     onClick: () -> Unit
 ) {
+    val selectedColor = Color.White
+    val unselectedColor = MaterialTheme.colorScheme.primary
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (selected) Color.White else MaterialTheme.colorScheme.primary,
-            contentColor = if (selected) MaterialTheme.colorScheme.primary else Color.White
+            containerColor = if (selected) selectedColor else unselectedColor,
+            contentColor = if (selected) unselectedColor else selectedColor
         )
     ) {
         Text(label)

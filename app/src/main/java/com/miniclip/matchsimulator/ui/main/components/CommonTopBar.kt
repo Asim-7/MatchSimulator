@@ -30,14 +30,14 @@ fun CustomTopBar(
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
 
     Surface(
-        color = MaterialTheme.colorScheme.primary,
+        color = Color.Transparent,
         shadowElevation = Dimens.padding_4
     ) {
         Row(
             modifier = modifier
                 .fillMaxWidth()
                 .height(Dimens.TopBarHeight)
-                .padding(horizontal = Dimens.padding_8),
+                .padding(horizontal = Dimens.padding_8, vertical = Dimens.padding_4),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Left circular image icon

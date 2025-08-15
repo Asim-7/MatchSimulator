@@ -16,7 +16,7 @@ object Dimens {
     val MatchCardCornerRadius = 12.dp
     val TeamLogoSize = 60.dp
     // TopBar
-    val TopBarHeight = 56.dp
+    val TopBarHeight = 70.dp
     // Table cells
     val TableCellWidth = 64.dp
     val TableCellImageSize = 40.dp
