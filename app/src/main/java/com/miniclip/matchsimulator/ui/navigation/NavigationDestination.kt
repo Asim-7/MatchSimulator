@@ -7,15 +7,15 @@ interface NavigationDestination {
 }
 
 object MatchesScreen : NavigationDestination {
-    override val route = "matches"
+    override val route = MATCH_ROUTE_ID
 }
 
 object TableScreen : NavigationDestination {
-    override val route = "table"
+    override val route = TABLE_ROUTE_ID
 }
 
 object StatScreen : NavigationDestination {
-    override val route = "stats"
+    override val route = STATS_ROUTE_ID
 }
 
 fun NavHostController.navigateSingleTopTo(route: String) = this.navigate(route) {
@@ -25,3 +25,7 @@ fun NavHostController.navigateSingleTopTo(route: String) = this.navigate(route) 
         saveState = true
     }
 }
+
+const val MATCH_ROUTE_ID = "matches"
+const val TABLE_ROUTE_ID = "table"
+const val STATS_ROUTE_ID = "stats"
