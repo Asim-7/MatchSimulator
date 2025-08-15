@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.miniclip.matchsimulator.data.model.MatchEntity
+import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun MatchesGroup(
@@ -18,15 +18,15 @@ fun MatchesGroup(
 ) {
     LazyColumn(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-        contentPadding = PaddingValues(vertical = 8.dp)
+        verticalArrangement = Arrangement.spacedBy(Dimens.padding_12),
+        contentPadding = PaddingValues(vertical = Dimens.padding_8)
     ) {
         grouped.forEach { (day, dayMatches) ->
             item {
                 MatchDayRow(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                        .padding(horizontal = Dimens.padding_16, vertical = Dimens.padding_8),
                     day = day
                 )
             }

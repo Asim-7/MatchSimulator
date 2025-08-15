@@ -8,7 +8,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.miniclip.matchsimulator.R
+import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun MatchDayRow(modifier: Modifier, day: Int) {
@@ -18,16 +20,16 @@ fun MatchDayRow(modifier: Modifier, day: Int) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Home",
+            text = stringResource(id = R.string.home),
             style = MaterialTheme.typography.bodyMedium
         )
         Text(
-            text = "Match Day $day",
+            text = "${stringResource(id = R.string.match_day)} $day",
             style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier.padding(vertical = Dimens.padding_8)
         )
         Text(
-            text = "Away",
+            text = stringResource(id = R.string.away),
             style = MaterialTheme.typography.bodyMedium
         )
     }

@@ -6,14 +6,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.draw.clip
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import com.miniclip.matchsimulator.ui.theme.Dimens
 
 @Composable
 fun MatchCard(
@@ -23,19 +22,18 @@ fun MatchCard(
 ) {
     Card(
         modifier = modifier
-            .height(120.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .height(Dimens.MatchCardHeight)
+            .clip(RoundedCornerShape(Dimens.MatchCardCornerRadius))
             .clickable { onMatchClick(match) },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer
         )
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-            // Main row content
             Row(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
+                    .padding(Dimens.padding_16),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
@@ -43,7 +41,7 @@ fun MatchCard(
                     painter = painterResource(id = match.homeTeamLogo),
                     contentDescription = match.homeTeam,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(Dimens.TeamLogoSize)
                         .clip(CircleShape)
                 )
                 Box(
@@ -56,25 +54,26 @@ fun MatchCard(
                         } else {
                             "vs"
                         },
-                        fontSize = 30.sp,
-                        style = MaterialTheme.typography.titleMedium
+                        fontSize = Dimens.font_30,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer
                     )
                 }
                 Image(
                     painter = painterResource(id = match.awayTeamLogo),
                     contentDescription = match.awayTeam,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(Dimens.TeamLogoSize)
                         .clip(CircleShape)
                 )
             }
-            // Date and time in the bottom
             Text(
                 text = "${match.matchDate} | ${match.matchTime}",
-                fontSize = 12.sp,
+                fontSize = Dimens.font_12,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = 8.dp)
+                    .padding(bottom = Dimens.padding_8)
             )
         }
     }
