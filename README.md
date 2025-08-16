@@ -2,6 +2,31 @@
 
 A modern Android app for simulating matches, built with Jetpack Compose and following best practices.
 
+## Getting Started
+
+1. **Clone the repository**
+2. **Open in Android Studio**
+3. **Build and run on emulator or device**
+
+## Project Structure
+
+- `data/`: Data models, Room database and repositories.
+- `di/`: Hilt modules for dependency injection.
+- `ui/`: UI screens, there components and ViewModels for state management.
+- `utils/`: Utility functions and extensions.
+- `repository/`: Data sources and business logic.
+- `navigation/`: Navigation graph and routes.
+
+## Tech Stack
+
+- Kotlin
+- Jetpack Compose
+- Hilt
+- Navigation Compose
+- Room Database
+- Lottie
+- JUnit, Espresso, Compose Test
+
 ## Features
 
 - **MVVM Architecture**: Separation of concerns using ViewModel, Repository, and UI layers.
@@ -19,36 +44,11 @@ A modern Android app for simulating matches, built with Jetpack Compose and foll
 - **UI Tests**: Compose UI tests for user interface validation.
 - **Integration Tests**: End-to-end flow verification.
 
-## Project Structure
-
-- `data/`: Data models, Room database and repositories.
-- `di/`: Hilt modules for dependency injection.
-- `ui/`: UI screens, there components and ViewModels for state management.
-- `utils/`: Utility functions and extensions.
-- `repository/`: Data sources and business logic.
-- `navigation/`: Navigation graph and routes.
-
-## Getting Started
-
-1. **Clone the repository**
-2. **Open in Android Studio**
-3. **Build and run on emulator or device**
-
 ## Testing
 
 - **Unit Tests**: Located in `test/`
 - **UI Tests**: Located in `androidTest/`
 - **Integration Test**: Located in `androidTest/`
-
-## Tech Stack
-
-- Kotlin
-- Jetpack Compose
-- Hilt
-- Navigation Compose
-- Room Database
-- Lottie
-- JUnit, Espresso, Compose Test
 
 ## License
 
