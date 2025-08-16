@@ -2,6 +2,25 @@
 
 A modern Android app for simulating matches, built with Jetpack Compose and following best practices.
 
+## Screenshots
+### Match Screen
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://github.com/Asim-7/MatchSimulator/blob/master/screenshots/match_day_light.png" alt="Screenshot 1" width="48%">
+  <img src="https://github.com/Asim-7/MatchSimulator/blob/master/screenshots/match_day_dark.png" alt="Screenshot 1" width="48%">
+</div>
+
+### Table Screen
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://github.com/Asim-7/MatchSimulator/blob/master/screenshots/standings_light.png" alt="Screenshot 1" width="48%">
+  <img src="https://github.com/Asim-7/MatchSimulator/blob/master/screenshots/standings_dark.png" alt="Screenshot 1" width="48%">
+</div>
+
+### Simulation Screen
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://github.com/Asim-7/MatchSimulator/blob/master/screenshots/simulation_light.png" alt="Screenshot 1" width="48%">
+  <img src="https://github.com/Asim-7/MatchSimulator/blob/master/screenshots/simulation_dark.png" alt="Screenshot 1" width="48%">
+</div>
+
 ## Getting Started
 
 1. **Clone the repository**
