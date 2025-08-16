@@ -28,7 +28,12 @@ class MatchAndStandingsUseCase @Inject constructor(
 
     private suspend fun updateMatchAndStandings(updatedMatch: MatchEntity) {
         matchRepository.updateMatch(updatedMatch)
-        val standings = standingsRepository.getAllStandings().first()
+        var standings = standingsRepository.getAllStandings().first()
+        // If standings are empty, initialize them with dummy data
+        if (standings.isEmpty()) {
+            standingsRepository.insertStandings(standingsRepository.getDummyStandings())
+            standings = standingsRepository.getAllStandings().first()
+        }
         val result = updateTeamStandingsAfterMatch(updatedMatch, standings)
         result?.let { (updatedHome, updatedAway) ->
             standingsRepository.updateStandings(updatedHome)
