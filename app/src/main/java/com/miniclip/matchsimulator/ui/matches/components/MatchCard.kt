@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import com.miniclip.matchsimulator.ui.theme.Dimens
 
@@ -21,11 +22,13 @@ import com.miniclip.matchsimulator.ui.theme.Dimens
 fun MatchCard(
     match: MatchEntity,
     modifier: Modifier = Modifier,
+    testIndex: Int = 0, // Optional index for testing purposes
     onMatchClick: (MatchEntity) -> Unit
 ) {
     // MatchCard displays match details with a blurred background
     Card(
         modifier = modifier
+            .testTag("matchItem_$testIndex")
             .height(Dimens.MatchCardHeight)
             .padding(horizontal = Dimens.padding_25)
             .clip(RoundedCornerShape(Dimens.MatchCardCornerRadius))

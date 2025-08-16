@@ -34,7 +34,11 @@ fun MatchesGroup(
             }
             items(dayMatches.size) { index ->
                 val match = dayMatches[index]
-                MatchCard(match = match, onMatchClick = onMatchClick)
+                MatchCard(
+                    match = match,
+                    testIndex = index,
+                    onMatchClick = onMatchClick
+                )
             }
         }
     }
