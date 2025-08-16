@@ -29,7 +29,7 @@ fun TabButton(
 ) {
     // Defined colors here for simplicity
     val selectedColor = Color.White
-    val unselectedColor = MaterialTheme.colorScheme.primary
+    val unselectedColor = MaterialTheme.colorScheme.onSurface
     Button(
         modifier = Modifier.testTag(testTag),
         onClick = onClick,
