@@ -9,7 +9,7 @@ import com.miniclip.matchsimulator.data.repository.MatchRepository
 import com.miniclip.matchsimulator.data.repository.MatchRepositoryImpl
 import com.miniclip.matchsimulator.data.repository.StandingsRepository
 import com.miniclip.matchsimulator.data.repository.StandingsRepositoryImpl
-import com.miniclip.matchsimulator.data.repository.UpdateMatchAndStandingsUseCase
+import com.miniclip.matchsimulator.data.repository.MatchAndStandingsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,9 +43,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUpdateMatchAndStandingsUseCase(
+    fun provideMatchAndStandingsUseCase(
         matchRepository: MatchRepository,
         standingsRepository: StandingsRepository
-    ): UpdateMatchAndStandingsUseCase =
-        UpdateMatchAndStandingsUseCase(matchRepository, standingsRepository)
+    ): MatchAndStandingsUseCase =
+        MatchAndStandingsUseCase(matchRepository, standingsRepository)
 }

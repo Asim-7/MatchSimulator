@@ -16,7 +16,7 @@ import javax.inject.Inject
  * Also provides functionality to show a loader while the match is being processed
  * and to reset all matches and standings to their initial dummy state.
  */
-class UpdateMatchAndStandingsUseCase @Inject constructor(
+class MatchAndStandingsUseCase @Inject constructor(
     private val matchRepository: MatchRepository,
     private val standingsRepository: StandingsRepository
 ) {

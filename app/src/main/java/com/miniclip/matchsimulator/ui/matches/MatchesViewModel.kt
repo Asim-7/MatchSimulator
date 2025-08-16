@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miniclip.matchsimulator.data.model.MatchEntity
 import com.miniclip.matchsimulator.data.repository.MatchRepository
-import com.miniclip.matchsimulator.data.repository.UpdateMatchAndStandingsUseCase
+import com.miniclip.matchsimulator.data.repository.MatchAndStandingsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MatchesViewModel @Inject constructor(
     private val repository: MatchRepository,
-    private val updateMatchAndStandingsUseCase: UpdateMatchAndStandingsUseCase
+    private val matchAndStandingsUseCase: MatchAndStandingsUseCase
 ) : ViewModel() {
 
     val matches: StateFlow<List<MatchEntity>> =
@@ -45,6 +45,6 @@ class MatchesViewModel @Inject constructor(
     }
 
     fun showLoaderForMatch(match: MatchEntity) {
-        updateMatchAndStandingsUseCase.showLoaderForMatch(match)
+        matchAndStandingsUseCase.showLoaderForMatch(match)
     }
 }

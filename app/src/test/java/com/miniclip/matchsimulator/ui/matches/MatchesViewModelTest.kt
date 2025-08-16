@@ -1,9 +1,8 @@
 package com.miniclip.matchsimulator.ui.matches
 
-import com.miniclip.matchsimulator.data.model.MatchEntity
 import com.miniclip.matchsimulator.data.remote.DummyData
 import com.miniclip.matchsimulator.data.repository.MatchRepository
-import com.miniclip.matchsimulator.data.repository.UpdateMatchAndStandingsUseCase
+import com.miniclip.matchsimulator.data.repository.MatchAndStandingsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
@@ -21,13 +20,13 @@ class MatchesViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
     private lateinit var matchRepository: MatchRepository
-    private lateinit var updateUseCase: UpdateMatchAndStandingsUseCase
+    private lateinit var updateUseCase: MatchAndStandingsUseCase
 
     @Before
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         matchRepository = mock(MatchRepository::class.java)
-        updateUseCase = mock(UpdateMatchAndStandingsUseCase::class.java)
+        updateUseCase = mock(MatchAndStandingsUseCase::class.java)
     }
 
     @After
