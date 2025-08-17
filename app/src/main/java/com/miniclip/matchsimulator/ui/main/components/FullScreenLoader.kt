@@ -72,6 +72,7 @@ fun FullScreenLoader(
         ) {
             LottieAnimation(
                 composition = composition,
+                iterations = 2,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(Dimens.padding_32)
